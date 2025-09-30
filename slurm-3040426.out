@@ -1,0 +1,156 @@
+[rank: 0] Seed set to 0
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0616fd6a50>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: 2aaac4ce-91e3-4283-873f-6fbfbcafb09a)')' thrown while requesting HEAD https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json
+Retrying in 1s [Retry 1/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0616fe74d0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: 9a10ed01-f21a-4411-a247-f84b53000722)')' thrown while requesting HEAD https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json
+Retrying in 2s [Retry 2/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0616fe6350>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: cf92232e-1275-41d1-9939-0918a73961d7)')' thrown while requesting HEAD https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json
+Retrying in 4s [Retry 3/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0616fe5950>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: a478eec5-f78a-4fd1-9122-ba2e9c65871d)')' thrown while requesting HEAD https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json
+Retrying in 8s [Retry 4/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0616fe5bd0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: 04e29a10-3871-4b45-9742-69498bf83716)')' thrown while requesting HEAD https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json
+Retrying in 8s [Retry 5/5].
+'(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0616fe56d0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: ce976ab1-b1c8-4c06-be72-92a10e089206)')' thrown while requesting HEAD https://huggingface.co/facebook/dinov3-vits16-pretrain-lvd1689m/resolve/main/config.json
+Using 16bit Automatic Mixed Precision (AMP)
+Using default `ModelCheckpoint`. Consider installing `litmodels` package to enable `LitModelCheckpoint` for automatic upload to the Lightning model registry.
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. Starting a new run with run id ckl3kvy9.
+wandb: Tracking run with wandb version 0.19.10
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+Loading `train_dataloader` to estimate number of stepping batches.
+
+   | Name                     | Type                        | Params | Mode 
+----------------------------------------------------------------------------------
+0  | network                  | EoMT                        | 23.3 M | train
+1  | network.encoder          | ViT                         | 21.6 M | train
+2  | network.encoder.backbone | DINOv3ViTModel              | 21.6 M | eval 
+3  | network.q                | Embedding                   | 76.8 K | train
+4  | network.class_head       | Linear                      | 770    | train
+5  | network.mask_head        | Sequential                  | 443 K  | train
+6  | network.mask_head.0      | Linear                      | 147 K  | train
+7  | network.mask_head.1      | GELU                        | 0      | train
+8  | network.mask_head.2      | Linear                      | 147 K  | train
+9  | network.mask_head.3      | GELU                        | 0      | train
+10 | network.mask_head.4      | Linear                      | 147 K  | train
+11 | network.upscale          | Sequential                  | 1.2 M  | train
+12 | network.upscale.0        | ScaleBlock                  | 594 K  | train
+13 | network.upscale.1        | ScaleBlock                  | 594 K  | train
+14 | criterion                | MaskClassificationLoss      | 0      | train
+15 | criterion.matcher        | Mask2FormerHungarianMatcher | 0      | train
+16 | metrics                  | ModuleList                  | 0      | train
+17 | metrics.0                | MeanAveragePrecision        | 0      | train
+18 | metrics.1                | MeanAveragePrecision        | 0      | train
+19 | metrics.2                | MeanAveragePrecision        | 0      | train
+20 | metrics.3                | MeanAveragePrecision        | 0      | train
+21 | metrics.4                | MeanAveragePrecision        | 0      | train
+----------------------------------------------------------------------------------
+23.3 M    Trainable params
+0         Non-trainable params
+23.3 M    Total params
+93.224    Total estimated model params size (MB)
+29        Modules in train mode
+186       Modules in eval mode
+SLURM auto-requeueing enabled. Setting signal handlers.
+Sanity Checking: |          | 0/? [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 183, in <module>
+    cli_main()
+    ~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 161, in cli_main
+    LightningCLI(
+    ~~~~~~~~~~~~^
+        LightningModule,
+        ^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 111, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 398, in __init__
+    self._run_subcommand(self.subcommand)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 708, in _run_subcommand
+    fn(**fn_kwargs)
+    ~~^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 157, in fit
+    self.trainer.fit(model, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 561, in fit
+    call._call_and_handle_interrupt(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, self._fit_impl, model, train_dataloaders, val_dataloaders, datamodule, ckpt_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/call.py", line 48, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 599, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 1012, in _run
+    results = self._run_stage()
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 1054, in _run_stage
+    self._run_sanity_check()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 1083, in _run_sanity_check
+    val_loop.run()
+    ~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 138, in run
+    batch, batch_idx, dataloader_idx = next(data_fetcher)
+                                       ~~~~^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/loops/fetchers.py", line 134, in __next__
+    batch = super().__next__()
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/loops/fetchers.py", line 61, in __next__
+    batch = next(self.iterator)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/combined_loader.py", line 341, in __next__
+    out = next(self._iterator)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/combined_loader.py", line 142, in __next__
+    out = next(self.iterators[0])
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py", line 733, in __next__
+    data = self._next_data()
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py", line 1515, in _next_data
+    return self._process_data(data, worker_id)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py", line 1550, in _process_data
+    data.reraise()
+    ~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/_utils.py", line 750, in reraise
+    raise exception
+AttributeError: Caught AttributeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/datasets/dataset.py", line 199, in __getitem__
+    masks, labels, is_crowd = self.target_parser(
+                              ~~~~~~~~~~~~~~~~~~^
+        target=target,
+        ^^^^^^^^^^^^^^
+    ...<6 lines>...
+        height=img.shape[-2],
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/datasets/ez_instance.py", line 63, in target_parser
+    masks.append(tv_tensors.Mask(coco_mask.decode(rle), dtype=torch.bool))
+                                 ~~~~~~~~~~~~~~~~^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/pycocotools/mask.py", line 91, in decode
+    return _mask.decode([rleObjs])[:,:,0]
+           ~~~~~~~~~~~~^^^^^^^^^^^
+  File "pycocotools/_mask.pyx", line 150, in pycocotools._mask.decode
+  File "pycocotools/_mask.pyx", line 98, in pycocotools._mask.Masks.__array__
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/numpy/__init__.py", line 795, in __getattr__
+    raise AttributeError(f"module {__name__!r} has no attribute {attr!r}")
+AttributeError: module 'numpy' has no attribute 'NPY_OWNDATA'
+
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync ./wandb/offline-run-20251001_003801-ckl3kvy9[0m
