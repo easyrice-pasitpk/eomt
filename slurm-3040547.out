@@ -1,0 +1,66 @@
+MASTER_PORT=10547
+WORLD_SIZE=4
+MASTER_ADDR=lanta-g-012
+[rank: 2] Seed set to 0
+[rank: 3] Seed set to 0
+[rank: 1] Seed set to 0
+[rank: 0] Seed set to 0
+Using 16bit Automatic Mixed Precision (AMP)
+Using default `ModelCheckpoint`. Consider installing `litmodels` package to enable `LitModelCheckpoint` for automatic upload to the Lightning model registry.
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. Starting a new run with run id dhboz88b.
+wandb: Tracking run with wandb version 0.19.10
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/4
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/4
+Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/4
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 4 processes
+----------------------------------------------------------------------------------------------------
+
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+Loading `train_dataloader` to estimate number of stepping batches.
+/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/loops/fit_loop.py:310: The number of training batches (41) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+
+   | Name                     | Type                        | Params | Mode 
+----------------------------------------------------------------------------------
+0  | network                  | EoMT                        | 23.3 M | train
+1  | network.encoder          | ViT                         | 21.6 M | train
+2  | network.encoder.backbone | DINOv3ViTModel              | 21.6 M | eval 
+3  | network.q                | Embedding                   | 76.8 K | train
+4  | network.class_head       | Linear                      | 770    | train
+5  | network.mask_head        | Sequential                  | 443 K  | train
+6  | network.mask_head.0      | Linear                      | 147 K  | train
+7  | network.mask_head.1      | GELU                        | 0      | train
+8  | network.mask_head.2      | Linear                      | 147 K  | train
+9  | network.mask_head.3      | GELU                        | 0      | train
+10 | network.mask_head.4      | Linear                      | 147 K  | train
+11 | network.upscale          | Sequential                  | 1.2 M  | train
+12 | network.upscale.0        | ScaleBlock                  | 594 K  | train
+13 | network.upscale.1        | ScaleBlock                  | 594 K  | train
+14 | criterion                | MaskClassificationLoss      | 0      | train
+15 | criterion.matcher        | Mask2FormerHungarianMatcher | 0      | train
+16 | metrics                  | ModuleList                  | 0      | train
+17 | metrics.0                | MeanAveragePrecision        | 0      | train
+18 | metrics.1                | MeanAveragePrecision        | 0      | train
+19 | metrics.2                | MeanAveragePrecision        | 0      | train
+20 | metrics.3                | MeanAveragePrecision        | 0      | train
+21 | metrics.4                | MeanAveragePrecision        | 0      | train
+----------------------------------------------------------------------------------
+23.3 M    Trainable params
+0         Non-trainable params
+23.3 M    Total params
+93.224    Total estimated model params size (MB)
+29        Modules in train mode
+186       Modules in eval mode
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.
+SLURM auto-requeueing enabled. Setting signal handlers.

@@ -1,0 +1,66 @@
+[rank: 0] Seed set to 0
+df: /home/pjakkraw/.triton/autotune: No such file or directory
+Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 188, in <module>
+    cli_main()
+    ~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 166, in cli_main
+    LightningCLI(
+    ~~~~~~~~~~~~^
+        LightningModule,
+        ^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 116, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 394, in __init__
+    self.instantiate_classes()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 565, in instantiate_classes
+    self.trainer = self.instantiate_trainer()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 579, in instantiate_trainer
+    return self._instantiate_trainer(trainer_config, extra_callbacks)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 604, in _instantiate_trainer
+    return self.trainer_class(**config)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 404, in __init__
+    self._accelerator_connector = _AcceleratorConnector(
+                                  ~~~~~~~~~~~~~~~~~~~~~^
+        devices=devices,
+        ^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+        plugins=plugins,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 157, in __init__
+    self._init_strategy()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 480, in _init_strategy
+    self.strategy = StrategyRegistry.get(self._strategy_flag)
+                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/fabric/strategies/registry.py", line 94, in get
+    return data["strategy"](**data["init_params"])
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/strategies/deepspeed.py", line 307, in __init__
+    import deepspeed
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/deepspeed/__init__.py", line 25, in <module>
+    from . import ops
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/deepspeed/ops/__init__.py", line 15, in <module>
+    from ..git_version_info import compatible_ops as __compatible_ops__
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/deepspeed/git_version_info.py", line 29, in <module>
+    op_compatible = builder.is_compatible()
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/deepspeed/ops/op_builder/fp_quantizer.py", line 35, in is_compatible
+    sys_cuda_major, _ = installed_cuda_version()
+                        ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/deepspeed/ops/op_builder/builder.py", line 51, in installed_cuda_version
+    raise MissingCUDAException("CUDA_HOME does not exist, unable to compile CUDA op(s)")
+deepspeed.ops.op_builder.builder.MissingCUDAException: CUDA_HOME does not exist, unable to compile CUDA op(s)

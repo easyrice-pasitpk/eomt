@@ -1,0 +1,135 @@
+[rank: 0] Seed set to 0
+Using 16bit Automatic Mixed Precision (AMP)
+Using default `ModelCheckpoint`. Consider installing `litmodels` package to enable `LitModelCheckpoint` for automatic upload to the Lightning model registry.
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. Starting a new run with run id a6493fbw.
+wandb: Tracking run with wandb version 0.19.10
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+Loading `train_dataloader` to estimate number of stepping batches.
+
+   | Name                     | Type                        | Params | Mode 
+----------------------------------------------------------------------------------
+0  | network                  | EoMT                        | 23.3 M | train
+1  | network.encoder          | ViT                         | 21.6 M | train
+2  | network.encoder.backbone | DINOv3ViTModel              | 21.6 M | eval 
+3  | network.q                | Embedding                   | 76.8 K | train
+4  | network.class_head       | Linear                      | 770    | train
+5  | network.mask_head        | Sequential                  | 443 K  | train
+6  | network.mask_head.0      | Linear                      | 147 K  | train
+7  | network.mask_head.1      | GELU                        | 0      | train
+8  | network.mask_head.2      | Linear                      | 147 K  | train
+9  | network.mask_head.3      | GELU                        | 0      | train
+10 | network.mask_head.4      | Linear                      | 147 K  | train
+11 | network.upscale          | Sequential                  | 1.2 M  | train
+12 | network.upscale.0        | ScaleBlock                  | 594 K  | train
+13 | network.upscale.1        | ScaleBlock                  | 594 K  | train
+14 | criterion                | MaskClassificationLoss      | 0      | train
+15 | criterion.matcher        | Mask2FormerHungarianMatcher | 0      | train
+16 | metrics                  | ModuleList                  | 0      | train
+17 | metrics.0                | MeanAveragePrecision        | 0      | train
+18 | metrics.1                | MeanAveragePrecision        | 0      | train
+19 | metrics.2                | MeanAveragePrecision        | 0      | train
+20 | metrics.3                | MeanAveragePrecision        | 0      | train
+21 | metrics.4                | MeanAveragePrecision        | 0      | train
+----------------------------------------------------------------------------------
+23.3 M    Trainable params
+0         Non-trainable params
+23.3 M    Total params
+93.224    Total estimated model params size (MB)
+29        Modules in train mode
+186       Modules in eval mode
+SLURM auto-requeueing enabled. Setting signal handlers.
+Sanity Checking: |          | 0/? [00:00<?, ?it/s]Sanity Checking:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 188, in <module>
+    cli_main()
+    ~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 166, in cli_main
+    LightningCLI(
+    ~~~~~~~~~~~~^
+        LightningModule,
+        ^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 116, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 398, in __init__
+    self._run_subcommand(self.subcommand)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 708, in _run_subcommand
+    fn(**fn_kwargs)
+    ~~^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 162, in fit
+    self.trainer.fit(model, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 561, in fit
+    call._call_and_handle_interrupt(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, self._fit_impl, model, train_dataloaders, val_dataloaders, datamodule, ckpt_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/call.py", line 48, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 599, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 1012, in _run
+    results = self._run_stage()
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 1054, in _run_stage
+    self._run_sanity_check()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 1083, in _run_sanity_check
+    val_loop.run()
+    ~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 145, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 437, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/call.py", line 328, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/_dynamo/eval_frame.py", line 655, in _fn
+    return fn(*args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/training/lightning_module.py", line 187, in validation_step
+    return self.eval_step(batch, batch_idx, "val")
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/training/mask_classification_instance.py", line 104, in eval_step
+    mask_logits = self.revert_resize_and_pad_logits_instance_panoptic(
+        mask_logits, img_sizes
+    )
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/_dynamo/eval_frame.py", line 838, in _fn
+    return fn(*args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/training/lightning_module.py", line 728, in revert_resize_and_pad_logits_instance_panoptic
+    logits_i = interpolate(
+               ~~~~~~~~~~~^
+        logits_i[None, ...],
+        ^^^^^^^^^^^^^^^^^^^^
+        img_sizes[i],
+        ^^^^^^^^^^^^^
+        mode="bilinear",
+        ^^^^^^^^^^^^^^^^
+    )[0]
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/nn/functional.py", line 4693, in interpolate
+    return torch._C._nn.upsample_bilinear2d(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        input, output_size, align_corners, scale_factors
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 314.00 MiB. GPU 0 has a total capacity of 39.50 GiB of which 16.12 MiB is free. Including non-PyTorch memory, this process has 39.44 GiB memory in use. Of the allocated memory 37.05 GiB is allocated by PyTorch, and 1.89 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync ./wandb/offline-run-20251001_015106-a6493fbw[0m

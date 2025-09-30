@@ -1,0 +1,61 @@
+MASTER_PORT=10490
+WORLD_SIZE=4
+MASTER_ADDR=lanta-g-011
+[rank: 0] Seed set to 0
+Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 188, in <module>
+    cli_main()
+    ~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 166, in cli_main
+    LightningCLI(
+    ~~~~~~~~~~~~^
+        LightningModule,
+        ^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 116, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 394, in __init__
+    self.instantiate_classes()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 565, in instantiate_classes
+    self.trainer = self.instantiate_trainer()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 579, in instantiate_trainer
+    return self._instantiate_trainer(trainer_config, extra_callbacks)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 604, in _instantiate_trainer
+    return self.trainer_class(**config)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 404, in __init__
+    self._accelerator_connector = _AcceleratorConnector(
+                                  ~~~~~~~~~~~~~~~~~~~~~^
+        devices=devices,
+        ^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+        plugins=plugins,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 147, in __init__
+    self._set_parallel_devices_and_init_accelerator()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 377, in _set_parallel_devices_and_init_accelerator
+    self._devices_flag = accelerator_cls.parse_devices(self._devices_flag)
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/accelerators/cuda.py", line 88, in parse_devices
+    return _parse_gpu_ids(devices, include_cuda=True)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/fabric/utilities/device_parser.py", line 103, in _parse_gpu_ids
+    return _sanitize_gpu_ids(gpus, include_cuda=include_cuda, include_mps=include_mps)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/fabric/utilities/device_parser.py", line 136, in _sanitize_gpu_ids
+    raise MisconfigurationException(
+        f"You requested gpu: {gpus}\n But your machine only has: {all_available_gpus}"
+    )
+lightning.fabric.utilities.exceptions.MisconfigurationException: You requested gpu: [0, 1, 2, 3]
+ But your machine only has: [0]

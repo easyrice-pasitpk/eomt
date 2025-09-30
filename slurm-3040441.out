@@ -8,3 +8,77 @@ wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. S
 wandb: Tracking run with wandb version 0.19.10
 wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
 Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4
+Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 188, in <module>
+    cli_main()
+    ~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 166, in cli_main
+    LightningCLI(
+    ~~~~~~~~~~~~^
+        LightningModule,
+        ^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 116, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 398, in __init__
+    self._run_subcommand(self.subcommand)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 708, in _run_subcommand
+    fn(**fn_kwargs)
+    ~~^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 162, in fit
+    self.trainer.fit(model, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 561, in fit
+    call._call_and_handle_interrupt(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, self._fit_impl, model, train_dataloaders, val_dataloaders, datamodule, ckpt_path
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/call.py", line 47, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 105, in launch
+    return function(*args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 599, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 968, in _run
+    self.strategy.setup_environment()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/strategies/ddp.py", line 154, in setup_environment
+    self.setup_distributed()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/strategies/ddp.py", line 203, in setup_distributed
+    _init_dist_connection(self.cluster_environment, self._process_group_backend, timeout=self._timeout)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/fabric/utilities/distributed.py", line 298, in _init_dist_connection
+    torch.distributed.init_process_group(torch_distributed_backend, rank=global_rank, world_size=world_size, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/distributed/c10d_logger.py", line 81, in wrapper
+    return func(*args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/distributed/c10d_logger.py", line 95, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/distributed/distributed_c10d.py", line 1710, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/distributed/rendezvous.py", line 278, in _env_rendezvous_handler
+    store = _create_c10d_store(
+        master_addr, master_port, rank, world_size, timeout, use_libuv
+    )
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/torch/distributed/rendezvous.py", line 198, in _create_c10d_store
+    return TCPStore(
+        host_name=hostname,
+    ...<5 lines>...
+        use_libuv=use_libuv,
+    )
+torch.distributed.DistStoreError: Timed out after 1801 seconds waiting for clients. 1/4 clients joined.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync ./wandb/offline-run-20251001_010254-5oobvsw8[0m

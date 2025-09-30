@@ -1,0 +1,56 @@
+[rank: 0] Seed set to 0
+Traceback (most recent call last):
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 188, in <module>
+    cli_main()
+    ~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 166, in cli_main
+    LightningCLI(
+    ~~~~~~~~~~~~^
+        LightningModule,
+        ^^^^^^^^^^^^^^^^
+    ...<15 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/main.py", line 116, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 394, in __init__
+    self.instantiate_classes()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 565, in instantiate_classes
+    self.trainer = self.instantiate_trainer()
+                   ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 579, in instantiate_trainer
+    return self._instantiate_trainer(trainer_config, extra_callbacks)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/cli.py", line 604, in _instantiate_trainer
+    return self.trainer_class(**config)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/trainer.py", line 404, in __init__
+    self._accelerator_connector = _AcceleratorConnector(
+                                  ~~~~~~~~~~~~~~~~~~~~~^
+        devices=devices,
+        ^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+        plugins=plugins,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 157, in __init__
+    self._init_strategy()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 480, in _init_strategy
+    self.strategy = StrategyRegistry.get(self._strategy_flag)
+                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/fabric/strategies/registry.py", line 94, in get
+    return data["strategy"](**data["init_params"])
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustrefs/disk/home/pjakkraw/workspace/eomt/.venv/lib/python3.13/site-packages/lightning/pytorch/strategies/deepspeed.py", line 258, in __init__
+    raise MisconfigurationException(
+    ...<2 lines>...
+    )
+lightning.fabric.utilities.exceptions.MisconfigurationException: To use the `DeepSpeedStrategy`, you must have DeepSpeed installed. Install it by running `pip install -U deepspeed`.

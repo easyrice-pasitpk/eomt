@@ -1,0 +1,18 @@
+MASTER_PORT=10501
+WORLD_SIZE=4
+MASTER_ADDR=lanta-g-002
+[rank: 0] Seed set to 0
+Using 16bit Automatic Mixed Precision (AMP)
+Using default `ModelCheckpoint`. Consider installing `litmodels` package to enable `LitModelCheckpoint` for automatic upload to the Lightning model registry.
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. Starting a new run with run id 8ahm6rnb.
+wandb: Tracking run with wandb version 0.19.10
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[rank: 1] Seed set to 0
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/4
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 3040501.0 ON lanta-g-002 CANCELLED AT 2025-10-01T03:20:15 ***
+slurmstepd: error: *** JOB 3040501 ON lanta-g-002 CANCELLED AT 2025-10-01T03:20:15 ***

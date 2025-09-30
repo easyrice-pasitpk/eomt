@@ -1,6 +1,6 @@
 trainer:
   max_epochs: 100
-  check_val_every_n_epoch: 2
+  check_val_every_n_epoch: 1
   logger:
     class_path: lightning.pytorch.loggers.wandb.WandbLogger
     init_args:
@@ -11,11 +11,11 @@ model:
   class_path: training.mask_classification_instance.MaskClassificationInstance
   init_args:
     attn_mask_annealing_enabled: True
-    attn_mask_annealing_start_steps: [14782, 29564, 44346, 59128]
-    attn_mask_annealing_end_steps: [29564, 44346, 59128, 73910]
+    attn_mask_annealing_start_steps: [1478, 2956, 4434, 5912]
+    attn_mask_annealing_end_steps: [2956, 4434, 5912, 7391]
     lr: 2e-4
     llrd_l2_enabled: False
-    warmup_steps: [2000, 3000]
+    warmup_steps: [200, 300]
     delta_weights: True
     network:
       class_path: models.eomt.EoMT
