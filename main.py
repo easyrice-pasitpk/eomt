@@ -25,11 +25,6 @@ from datasets.lightning_data_module import LightningDataModule
 import os
 os.environ["TORCH_LOGS"] = "-dynamo"
 
-import numpy as np
-if not hasattr(np, "NPY_OWNDATA"):
-    np.NPY_OWNDATA = 1  # placeholder value for compatibility
-
-
 
 _orig_single = _t.raise_unexpected_value
 
