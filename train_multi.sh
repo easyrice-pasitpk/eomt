@@ -31,6 +31,6 @@ srun python main.py fit \
   --compile_disabled \
   --trainer.devices 4 \
   --trainer.num_nodes 1 \
-  --data.num_workers 2 \
-  --data.batch_size 32 \
+  --data.num_workers 4 \
+  --data.batch_size 8 \
   --data.path /project/lt200377-mpind/segment
